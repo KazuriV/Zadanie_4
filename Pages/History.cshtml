@@ -1,0 +1,51 @@
+﻿@page
+@model PD4_PZ_109602_202108.Pages.HistoryModel
+
+@{
+    ViewData["Title"] = "History";
+}
+
+<h1>History</h1>
+
+@*<p>
+    <a asp-page="Create">Create New</a>
+</p>*@
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ChatMessage[0].User)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ChatMessage[0].Message)
+            </th>
+            @*<th>
+                @Html.DisplayNameFor(model => model.ChatMessage[0].Sender)
+            </th>*@
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.ChatMessage) {
+        <tr>
+            @if (item.User == User.Identity.Name)
+            {
+                <td>
+                    @Html.DisplayFor(modelItem => item.User)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Message)
+                </td>
+                @*<td>
+                    @Html.DisplayFor(modelItem => item.Sender.Id)
+                </td>*@
+                @*<td>
+                    <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
+                    <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
+                </td>*@
+            }
+            </tr>
+}
+    </tbody>
+</table>
